@@ -18,19 +18,55 @@
         type="text"
         name="query_search"
         placeholder="buscar por titulo,autor"
-        value="{{query}}"
+        value="{% if query  %} {{query}}  {% endif %}"
+      />
+      <input
+        type="date"
+        name="start"
+        placeholder="buscar por titulo,autor"
+        value="{{request.GET.start}}"
+      />
+      <input
+        type="date"
+        name="end"
+        placeholder="buscar por titulo,autor"
+        value="{{request.GET.end}}"
       />
 
       <button type="submit">buscar</button>
     </form>
 
     <ul>
-      {% for book in books %}
-      <li>{{book.title}} - {{book.author.name}}</li>
+      {% for book in page_obj %}
+      <li>{{book.title}} - {{book.author.name}} / {{book.publication_date}}</li>
 
       {% empty %}
       <li>No se encontraron libros de este autor</li>
       {% endfor %}
     </ul>
+
+    <div>
+      {% if page_obj.has_previous %}
+      <a href="?page=1&{{query_string}}">Primera página</a>
+      <a href="?page={{page_obj.previous_page_number}}&{{query_string}}"
+        >Anterior página</a
+      >
+
+      {% endif %}
+
+      <span>
+        Página {{page_obj.number}} de {{ page_obj.paginator.num_pages}}
+      </span>
+
+      {% if page_obj.has_next %}
+      <a href="?page={{page_obj.next_page_number}}&{{query_string}}"
+        >Siguiente página</a
+      >
+      <a href="?page={{page_obj.paginator.num_pages}}&{{query_string}}"
+        >Ultima página</a
+      >
+
+      {% endif %}
+    </div>
   </body>
 </html>
