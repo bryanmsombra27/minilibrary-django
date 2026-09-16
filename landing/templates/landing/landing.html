@@ -1,0 +1,35 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0"
+    />
+    <title>TEMplate de django</title>
+  </head>
+  <body>
+    <h1>Bienvenido {{name | upper }} !</h1>
+    {% if name %}
+    <h2>Hola desde el if si es si es ciero mother fucker</h2>
+
+    {% else %}
+    <h3>Es falso no hagas caso no es cierto</h3>
+
+    {% endif %}
+
+    <p>fecha: {{date | date:"d/m/Y" }}</p>
+
+    <ul>
+      {% for language in stack %}
+
+      <li>
+        {% comment %} AMBOS VALORES SON VALIDOS {% endcomment %}
+        {% comment %} <a href="{% url "stack" language %}"> {{language | upper}} </a> {% endcomment %}
+        <a href="{% url "stack" tool=language %}"> {{language | upper}} </a>
+      </li>
+
+      {% endfor %}
+    </ul>
+  </body>
+</html>

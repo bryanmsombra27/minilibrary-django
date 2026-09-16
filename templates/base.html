@@ -1,0 +1,24 @@
+{% load static %}
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0"
+    />
+
+    {% block title %}
+
+    <title>{{title}}</title>
+    <link rel="stylesheet" href="{% static "styles.css" %}">
+
+    {% endblock %} {% block page_styles %} {{page_styles}} {% comment %} {%
+    endcomment %} {% comment %} {% endcomment %} {% endblock page_styles %}
+  </head>
+
+  <body>
+    <h1>Plantilla padre muder fucker</h1>
+    {% block content%} {{content}} {% endblock %}
+  </body>
+</html>

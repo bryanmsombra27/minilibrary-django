@@ -1,0 +1,24 @@
+{% extends "base.html" %} 
+{% load static %}
+{% block page_styles %}
+    <link rel="stylesheet" href="{% static "quotes/quotes_styles.css" %}">
+
+{% endblock page_styles %}
+
+
+{% block content %}
+
+
+
+<ul>
+    {% for day in days_of_week  %}
+       <ul><a href="{% url "day-quote" day=day %}">{{day}}   </a></ul> 
+
+    
+    {% endfor %}
+
+
+</ul>
+
+
+{% endblock content %}

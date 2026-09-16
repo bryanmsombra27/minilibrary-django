@@ -1,0 +1,8 @@
+ul {
+  font-size: 20px;
+  font-weight: bold;
+
+  li {
+    list-style: none;
+  }
+}
